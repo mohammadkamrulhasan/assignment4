@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
     <!-- Fonts -->
-   <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet"> -->
+        rel="stylesheet"> 
     <!-- Stylesheet --> 
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
@@ -155,20 +155,20 @@
                 ticketSubtotal=ticketNewCount*100;
             }
             document.getElementById(ticket+'-total').innerText='$'+ticketSubtotal;
-            calculateTotal();
+            calculateTicketTotal();
         }
 
-        function calculateTotal(){
+        function calculateTicketTotal(){
             const firstClassCount=getTicketValue('firstClass');
             const economyCount=getTicketValue('economy');
 
-            const SubtotalPrice=firstClassCount*150+economyCount*100;
+            const SubtotalPrice=firstClassCount*150+economyCount*100; //Calculate subtotal amount
             document.getElementById('subtotal-price').innerText='$'+SubtotalPrice;
 
-            const taxAmount=Math.round(SubtotalPrice* 0.1);
+            const taxAmount=Math.round(SubtotalPrice* 0.1); //Calculate Tax amount
             document.getElementById('tax-amount').innerText='$'+taxAmount;
 
-            const totalAmount=SubtotalPrice+taxAmount;
+            const totalAmount=SubtotalPrice+taxAmount;  //Calculate Total Ticket Price
             document.getElementById('total-amount').innerText='$'+totalAmount;
         }
     </script>
