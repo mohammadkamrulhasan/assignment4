@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
     <!-- Fonts -->
-   <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet"> 
-    <!-- Stylesheet --> 
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" href="css/all.min.css">
-   <link rel="stylesheet" href="style.css">
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-        <div class="booking-form">
+        <div id="bookingForm" class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -44,7 +44,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -54,23 +54,27 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($ <span>150</span> )</label>
-                    <input id="firstClass-count" type="text" class="form-control text-center" value="0">                    
+                    <input id="firstClass-count" type="text" class="form-control text-center" value="0">
                 </div>
-                <div class="plus-minus-btn">                    
-                    <button onclick="bookingTicketChange('firstClass', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>                    
-                    <button onclick="bookingTicketChange('firstClass', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                    <h6 id="firstClass-total" >$0</h6>
+                <div class="plus-minus-btn">
+                    <button onclick="bookingTicketChange('firstClass', false)" class="btn btn-default"><i
+                            class="fas fa-minus"></i></button>
+                    <button onclick="bookingTicketChange('firstClass', true)" class="btn btn-default"><i
+                            class="fas fa-plus"></i></button>
+                    <h6 id="firstClass-total">$0</h6>
                 </div>
-            </div>            
+            </div>
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($ <span>100</span> )</label>
                     <input id="economy-count" type="text" class="form-control text-center" value="0">
-                </div>                
+                </div>
                 <div class="plus-minus-btn">
-                    <button onclick="bookingTicketChange('economy', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>                    
-                    <button onclick="bookingTicketChange('economy', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                    <h6 id="economy-total" >$0</h6>
+                    <button onclick="bookingTicketChange('economy', false)" class="btn btn-default"><i
+                            class="fas fa-minus"></i></button>
+                    <button onclick="bookingTicketChange('economy', true)" class="btn btn-default"><i
+                            class="fas fa-plus"></i></button>
+                    <h6 id="economy-total">$0</h6>
                 </div>
             </div>
             <div class="calculations">
@@ -79,7 +83,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                      <h6 id="subtotal-price" >$0</h6>
+                        <h6 id="subtotal-price">$0</h6>
                     </div>
                 </div>
 
@@ -88,7 +92,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                       <h6 id="tax-amount" >$0</h6>
+                        <h6 id="tax-amount">$0</h6>
                     </div>
                 </div>
                 <hr>
@@ -101,55 +105,75 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="bookNow" class="btn-style">Book Now</button>
         </div>
-
+        <!--Booking conformation part -->
+        <div id="booking-page" class="booking-form">
+            <div class="your-selection bg-primary text-white text-center">
+                <h3>Conform Your Selection </h3>
+            </div>
+            <div class="your-selection bg-secondary text-white text-center">
+                <p>Please click conform button to conform your ticket booking.</p>
+            </div>
+            <div class="your-selection bg-success text-white text-center">
+                <button class="btn-style" onclick="alert('Your Booking Conformed!')">Conform </button>
+            </div>
+        </div>
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
+                voluptatibus quam</p>
         </div>
-    </section>
+    </main>
     <script>
-        function getTicketValue(ticket){
-            const ticketInput=document.getElementById(ticket+'-count');
-            const ticketCount=parseInt(ticketInput.value);
+        function getTicketValue(ticket) {
+            const ticketInput = document.getElementById(ticket + '-count');
+            const ticketCount = parseInt(ticketInput.value);
             return ticketCount;
         }
 
-        function bookingTicketChange(ticket, isIncrease){
-            const ticketCount=getTicketValue(ticket);
-            let ticketNewCount=ticketCount;
-            if(isIncrease==true){
-                ticketNewCount=ticketCount+1;
+        function bookingTicketChange(ticket, isIncrease) {
+            const ticketCount = getTicketValue(ticket);
+            let ticketNewCount = ticketCount;
+            if (isIncrease == true) {
+                ticketNewCount = ticketCount + 1;
             }
-            if(isIncrease==false && ticketCount>0){
-                ticketNewCount=ticketCount-1;
+            if (isIncrease == false && ticketCount > 0) {
+                ticketNewCount = ticketCount - 1;
             }
-            document.getElementById(ticket+'-count').value=ticketNewCount;
-            let ticketSubtotal=0;
-            if(ticket=='firstClass'){
-                ticketSubtotal=ticketNewCount*150;
+            document.getElementById(ticket + '-count').value = ticketNewCount;
+            let ticketSubtotal = 0;
+            if (ticket == 'firstClass') {
+                ticketSubtotal = ticketNewCount * 150;
             }
-            if(ticket=='economy'){
-                ticketSubtotal=ticketNewCount*100;
+            if (ticket == 'economy') {
+                ticketSubtotal = ticketNewCount * 100;
             }
-            document.getElementById(ticket+'-total').innerText='$'+ticketSubtotal;
+            document.getElementById(ticket + '-total').innerText = '$' + ticketSubtotal;
             calculateTicketTotal();
         }
 
-        function calculateTicketTotal(){
-            const firstClassCount=getTicketValue('firstClass');
-            const economyCount=getTicketValue('economy');
+        function calculateTicketTotal() {
+            const firstClassCount = getTicketValue('firstClass');
+            const economyCount = getTicketValue('economy');
 
-            const SubtotalPrice=firstClassCount*150+economyCount*100; //Calculate subtotal amount
-            document.getElementById('subtotal-price').innerText='$'+SubtotalPrice;
+            const SubtotalPrice = firstClassCount * 150 + economyCount * 100; //Calculate subtotal amount
+            document.getElementById('subtotal-price').innerText = '$' + SubtotalPrice;
 
-            const taxAmount=Math.round(SubtotalPrice* 0.1); //Calculate Tax amount
-            document.getElementById('tax-amount').innerText='$'+taxAmount;
+            const taxAmount = Math.round(SubtotalPrice * 0.1); //Calculate Tax amount
+            document.getElementById('tax-amount').innerText = '$' + taxAmount;
 
-            const totalAmount=SubtotalPrice+taxAmount;  //Calculate Total Ticket Price
-            document.getElementById('total-amount').innerText='$'+totalAmount;
+            const totalAmount = SubtotalPrice + taxAmount;  //Calculate Total Ticket Price
+            document.getElementById('total-amount').innerText = '$' + totalAmount;
         }
+        const bookBtn = document.getElementById('bookNow');
+        bookBtn.addEventListener("click", function () {
+            const bookArea = document.getElementById("bookingForm");
+            bookArea.style.display = "none";
+            const bookingArea = document.getElementById("booking-page");
+            bookingArea.style.display = "block";
+        })
     </script>
     <script src="js/bootstrap.min.js"></script
 
